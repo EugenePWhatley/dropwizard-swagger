@@ -10,8 +10,10 @@ repositories {
 dependencies {
 	compile 'org.codehaus.groovy:groovy-all:2.4.5'
 	compile 'io.dropwizard:dropwizard-core:0.8.4'
+	compile 'io.federecio:dropwizard-swagger:0.7.0'
 }
 
 run {
 	mainClassName = 'HelloApplication'
+	args 'server', './config.yml'
 }
