@@ -11,18 +11,17 @@ import javax.ws.rs.Produces
 import javax.ws.rs.QueryParam
 import javax.ws.rs.core.MediaType
 
-@Path('/')
-@Api('/')
+@Path('/fizzBuzz')
+@Api('/fizzBuzz')
 class FizzBuzzResource {
 
 	@Inject
 	FizzBuzzProvider fizzBuzzProvider
 
 	@GET
-	@Path('/fizzBuzz')
 	@Produces(MediaType.APPLICATION_JSON)
 	@ApiOperation(value = 'counts up to n')
-	def helloWorld(@QueryParam('countTo') int countTo) {
+	def fizzBuzz(@QueryParam('countTo') int countTo) {
 		[countUpTo: countTo, counter: fizzBuzzProvider.count(countTo)]
 	}
 }

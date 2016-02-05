@@ -12,27 +12,27 @@ class FizzBuzzProviderTest extends Specification {
         counter != null
     }
 
-    def 'should count up to 3'() {
+    def 'should count up to 2'() {
         setup:
         FizzBuzzProvider counter = new FizzBuzzProvider()
-        def desiredCount = 3
+        def desiredCount = 2
 
         when:
         def response = counter.count(desiredCount)
 
         then:
-        response == [1,2,3]
+        response == [1,2]
     }
 
-    def 'should count up to 10'() {
+    def 'should count up 4 and replace 3 with fizz'() {
         setup:
         FizzBuzzProvider counter = new FizzBuzzProvider()
-        def desiredCount = 10
+        def desiredCount = 4
 
         when:
         def response = counter.count(desiredCount)
 
         then:
-        response == [1,2,3,4,5,6,7,8,9,10]
+        response == [1,2,'fizz',4]
     }
 }
