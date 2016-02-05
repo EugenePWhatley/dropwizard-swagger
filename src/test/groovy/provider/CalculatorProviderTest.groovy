@@ -66,4 +66,28 @@ class CalculatorProviderTest extends Specification {
         then:
         response == 6
     }
+
+    def 'should be undefined when divide anything by zero'() {
+        when:
+        def response = calculatorProvider.calculate(new CalculatorMessage(operation: Operation.DIVIDE, firstNumber: 0, secondNumber: 0))
+
+        then:
+        response == 'undefined'
+    }
+
+    void 'should be zero when dividing zero by one'() {
+        when:
+        def response = calculatorProvider.calculate(new CalculatorMessage(operation: Operation.DIVIDE, firstNumber: 0, secondNumber: 1))
+
+        then:
+        response == 0
+    }
+
+    void 'should be two when dividing two by one'() {
+        when:
+        def response = calculatorProvider.calculate(new CalculatorMessage(operation: Operation.DIVIDE, firstNumber: 2, secondNumber: 1))
+
+        then:
+        response == 2
+    }
 }

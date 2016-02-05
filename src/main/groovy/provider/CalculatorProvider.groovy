@@ -16,6 +16,16 @@ class CalculatorProvider {
         x * y
     }
 
+    private def divide(double x, double y) {
+        def quotient
+        if (!y) {
+            quotient = 'undefined'
+        } else {
+            quotient = x / y
+        }
+        quotient
+    }
+
     def calculate(CalculatorMessage calculatorMessage) {
         if (calculatorMessage.operation == Operation.ADD) {
             add(calculatorMessage.firstNumber, calculatorMessage.secondNumber)
@@ -23,6 +33,8 @@ class CalculatorProvider {
             subtract(calculatorMessage.firstNumber, calculatorMessage.secondNumber)
         } else if (calculatorMessage.operation == Operation.MULTIPLY) {
             multiply(calculatorMessage.firstNumber, calculatorMessage.secondNumber)
+        } else {
+            divide(calculatorMessage.firstNumber, calculatorMessage.secondNumber)
         }
     }
 }
