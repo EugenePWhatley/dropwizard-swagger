@@ -6,7 +6,7 @@ class FizzBuzzProvider {
         1.upto(i, {
             if (it % 3 == 0) {
                 counter.add('fizz')
-            } else if (it == 5) {
+            } else if (it % 5 == 0) {
                 counter.add('buzz')
             } else {
                 counter.add(it)

@@ -49,4 +49,15 @@ class FizzBuzzProviderTest extends Specification {
         then:
         response == [1, 2, 'fizz', 4, 'buzz', 'fizz', 7]
     }
+
+    def 'should count to 11 and replace everything divisible by 5 with buzz'() {
+        setup:
+        def desiredCount = 11
+
+        when:
+        def response = fizzBuzzProvider.count(desiredCount)
+
+        then:
+        response == [1, 2, 'fizz', 4, 'buzz', 'fizz', 7, 8, 'fizz', 'buzz', 11]
+    }
 }
