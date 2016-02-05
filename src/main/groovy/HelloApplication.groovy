@@ -5,7 +5,7 @@ import io.dropwizard.setup.Bootstrap
 import io.dropwizard.setup.Environment
 import io.federecio.dropwizard.swagger.SwaggerBundle
 import io.federecio.dropwizard.swagger.SwaggerBundleConfiguration
-import resource.FizzBuzzResource
+import resource.HelloWorldResource
 
 class HelloApplication extends Application<HelloConfiguration> {
     def static void main(final String[] args) throws Exception {
@@ -25,6 +25,6 @@ class HelloApplication extends Application<HelloConfiguration> {
     @Override
     def void run(final HelloConfiguration configuration, final Environment environment) throws Exception {
         Injector injector = Guice.createInjector(new HelloGuiceModule(configuration, environment))
-        environment.jersey().register(injector.getInstance(FizzBuzzResource))
+        environment.jersey().register(injector.getInstance(HelloWorldResource))
     }
 }
