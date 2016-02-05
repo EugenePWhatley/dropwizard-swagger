@@ -36,7 +36,7 @@ class FizzBuzzProviderTest extends Specification {
         def response = fizzBuzzProvider.count(desiredCount)
 
         then:
-        response == [1, 2, 'fizz', 4]
+        response == [1, 2, 'Fizz', 4]
     }
 
     def 'should count up to 7 and replace 5 with buzz and everything divisible by 3 with fizz'() {
@@ -47,7 +47,7 @@ class FizzBuzzProviderTest extends Specification {
         def response = fizzBuzzProvider.count(desiredCount)
 
         then:
-        response == [1, 2, 'fizz', 4, 'buzz', 'fizz', 7]
+        response == [1, 2, 'Fizz', 4, 'Buzz', 'Fizz', 7]
     }
 
     def 'should count to 11 and replace everything divisible by 5 with buzz'() {
@@ -58,6 +58,17 @@ class FizzBuzzProviderTest extends Specification {
         def response = fizzBuzzProvider.count(desiredCount)
 
         then:
-        response == [1, 2, 'fizz', 4, 'buzz', 'fizz', 7, 8, 'fizz', 'buzz', 11]
+        response == [1, 2, 'Fizz', 4, 'Buzz', 'Fizz', 7, 8, 'Fizz', 'Buzz', 11]
+    }
+
+    def 'should count to 16 and replace everything divisible by both 3 and 5 with FizzBuzz'() {
+        setup:
+        def desiredCount = 16
+
+        when:
+        def respnse = fizzBuzzProvider.count(desiredCount)
+
+        then:
+        respnse == [1, 2, 'Fizz', 4, 'Buzz', 'Fizz', 7, 8, 'Fizz', 'Buzz', 11, 'Fizz', 13, 14, 'FizzBuzz', 16]
     }
 }
