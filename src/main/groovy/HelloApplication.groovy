@@ -1,9 +1,11 @@
+import com.google.inject.Guice
+import com.google.inject.Injector
 import io.dropwizard.Application
 import io.dropwizard.setup.Bootstrap
 import io.dropwizard.setup.Environment
 import io.federecio.dropwizard.swagger.SwaggerBundle
 import io.federecio.dropwizard.swagger.SwaggerBundleConfiguration
-import resource.HelloResource
+import resource.FizzBuzzResource
 
 class HelloApplication extends Application<HelloConfiguration> {
     def static void main(final String[] args) throws Exception {
@@ -21,7 +23,8 @@ class HelloApplication extends Application<HelloConfiguration> {
     }
 
     @Override
-    def void run(final HelloConfiguration helloConfiguration, final Environment environment) throws Exception {
-        environment.jersey().register(new HelloResource())
+    def void run(final HelloConfiguration configuration, final Environment environment) throws Exception {
+        Injector injector = Guice.createInjector(new HelloGuiceModule(configuration, environment))
+        environment.jersey().register(injector.getInstance(FizzBuzzResource))
     }
 }
