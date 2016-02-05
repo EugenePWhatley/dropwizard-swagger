@@ -50,4 +50,20 @@ class CalculatorProviderTest extends Specification {
         then:
         response == -1
     }
+
+    def 'should give 0 when multiplying anything by 0'() {
+        when:
+        def response = calculatorProvider.calculate(new CalculatorMessage(operation: Operation.MULTIPLY, firstNumber: 0, secondNumber: 1))
+
+        then:
+        response == 0
+    }
+
+    def 'should give 6 when mutiplying 2 and 3'() {
+        when:
+        def response = calculatorProvider.calculate(new CalculatorMessage(operation: Operation.MULTIPLY, firstNumber: 2, secondNumber: 3))
+
+        then:
+        response == 6
+    }
 }
