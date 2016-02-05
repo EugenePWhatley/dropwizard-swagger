@@ -1,8 +1,5 @@
 import com.google.inject.AbstractModule
-import com.google.inject.Provides
 import io.dropwizard.setup.Environment
-import provider.FizzBuzzProvider
-
 
 class HelloGuiceModule extends AbstractModule {
     private final HelloConfiguration configuration
@@ -11,12 +8,6 @@ class HelloGuiceModule extends AbstractModule {
     HelloGuiceModule(final HelloConfiguration configuration, final Environment environment) {
         this.configuration = configuration
         this.environment = environment
-    }
-
-    @Provides
-    FizzBuzzProvider prepareFizzBuzzProvider() {
-        FizzBuzzProvider fizzBuzzProvider = new FizzBuzzProvider()
-        fizzBuzzProvider
     }
 
     @Override
