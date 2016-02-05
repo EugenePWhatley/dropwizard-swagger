@@ -3,9 +3,13 @@ package resource
 import com.google.inject.Inject
 import com.wordnik.swagger.annotations.Api
 import com.wordnik.swagger.annotations.ApiOperation
+import com.wordnik.swagger.annotations.ApiParam
+import message.CalculatorMessage
 import provider.CalculatorProvider
 import provider.FizzBuzzProvider
 
+import javax.validation.Valid
+import javax.ws.rs.Consumes
 import javax.ws.rs.GET
 import javax.ws.rs.Path
 import javax.ws.rs.Produces
@@ -38,8 +42,11 @@ class HelloWorldResource {
 
     @GET
     @Path('/calculator')
+    @Consumes(MediaType.APPLICATION_JSON)
     @ApiOperation(value = 'adds two numbers')
-    def calculator(@QueryParam('x') double x, @QueryParam('y') double y) {
-        [operation: 'addition', values: x + ' and ' + y, answer: calculatorProvider.add(x, y)]
+    def calculator(@ApiParam @Valid CalculatorMessage calculatorMessage) {
+        [operation: calculatorMessage.operation.value,
+         values: "$calculatorMessage.firstNumber and $calculatorMessage.secondNumber",
+         answer: calculatorProvider.calculate(calculatorMessage)]
     }
 }
