@@ -39,14 +39,14 @@ class FizzBuzzProviderTest extends Specification {
         response == [1, 2, 'fizz', 4]
     }
 
-    def 'should count up to 6 and replace 5 with buzz'() {
+    def 'should count up to 7 and replace 5 with buzz and everything divisible by 3 with fizz'() {
         setup:
-        def desiredCount = 6
+        def desiredCount = 7
 
         when:
         def response = fizzBuzzProvider.count(desiredCount)
 
         then:
-        response == [1, 2, 'fizz', 4, 'buzz', 6,]
+        response == [1, 2, 'fizz', 4, 'buzz', 'fizz', 7]
     }
 }
