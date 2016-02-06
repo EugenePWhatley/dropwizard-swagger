@@ -1,7 +1,7 @@
 package provider
 
-import message.CalculatorMessage
-import message.Operation
+import model.CalculatorMessage
+import model.Operation
 import spock.lang.Specification
 
 class CalculatorProviderTest extends Specification {
